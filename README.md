@@ -5,7 +5,6 @@ Smart contract using etherum and BigchainDb
 Install truffle and openzeppelin lib:
 
 ```javascript
-truffle init
 npm init -y
 npm install -E openzeppelin-solidity
 ```
