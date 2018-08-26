@@ -51,12 +51,12 @@ contract Whitelist is Ownable, RBAC {
    * @return true if at least one address was added to the whitelist,
    * false if all addresses were already in the whitelist
    */
-  function addAddressesToWhitelist(address[] _operators)
+  function addAddressesToWhitelist(address[] _operators, string role)
     public
     onlyOwner
   {
     for (uint256 i = 0; i < _operators.length; i++) {
-      addAddressToWhitelist(_operators[i]);
+      addAddressToWhitelist(_operators[i], role);
     }
   }
 
@@ -66,11 +66,11 @@ contract Whitelist is Ownable, RBAC {
    * @return true if the address was removed from the whitelist,
    * false if the address wasn't in the whitelist in the first place
    */
-  function removeAddressFromWhitelist(address _operator)
+  function removeAddressFromWhitelist(address _operator, string role)
     public
     onlyOwner
   {
-    removeRole(_operator, ROLE_WHITELISTED);
+    removeRole(_operator, role);
   }
 
   /**
@@ -79,12 +79,12 @@ contract Whitelist is Ownable, RBAC {
    * @return true if at least one address was removed from the whitelist,
    * false if all addresses weren't in the whitelist in the first place
    */
-  function removeAddressesFromWhitelist(address[] _operators)
+  function removeAddressesFromWhitelist(address[] _operators, string role)
     public
     onlyOwner
   {
     for (uint256 i = 0; i < _operators.length; i++) {
-      removeAddressFromWhitelist(_operators[i]);
+      removeAddressFromWhitelist(_operators[i], role);
     }
   }
 
