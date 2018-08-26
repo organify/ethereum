@@ -11,14 +11,14 @@ import "./rbac/RBAC.sol";
  * This simplifies the implementation of "user permissions".
  */
 contract Whitelist is Ownable, RBAC {
-  string public constant ROLE_WHITELISTED = "whitelist";
+  //string public constant ROLE_WHITELISTED = "whitelist";
 
   /**
    * @dev Throws if operator is not whitelisted.
    * @param _operator address
    */
-  modifier onlyIfWhitelisted(address _operator) {
-    checkRole(_operator, ROLE_WHITELISTED);
+  modifier onlyIfWhitelisted(address _operator, string role) {
+    checkRole(_operator, role);
     _;
   }
 
@@ -27,22 +27,22 @@ contract Whitelist is Ownable, RBAC {
    * @param _operator address
    * @return true if the address was added to the whitelist, false if the address was already in the whitelist
    */
-  function addAddressToWhitelist(address _operator)
+  function addAddressToWhitelist(address _operator, string role)
     public
     onlyOwner
   {
-    addRole(_operator, ROLE_WHITELISTED);
+    addRole(_operator, role);
   }
 
   /**
    * @dev getter to determine if address is in whitelist
    */
-  function whitelist(address _operator)
+  function whitelist(address _operator, string role)
     public
     view
     returns (bool)
   {
-    return hasRole(_operator, ROLE_WHITELISTED);
+    return hasRole(_operator, role);
   }
 
   /**
