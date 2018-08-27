@@ -3,7 +3,7 @@ pragma solidity ^0.4.24;
 
 import "./whitelist/Whitelist.sol";
 import "./Ownable.sol";
-import "./SafeMath.sol";
+import "./math/SafeMath.sol";
 
 contract MonthlySubscription is Whitelist {
    using SafeMath for uint256;
@@ -32,11 +32,11 @@ contract MonthlySubscription is Whitelist {
        addAddressToWhitelist(msg.sender, _role);
    }
 
-   function isSubscribed(address _address, string _role)
+   /*function isSubscribed(address _address, string _role)
    public onlyIfWhitelisted(_address, _role)
    view
    returns (bool){
        //do something here
        return true;
-   }
+   }*/
 }
