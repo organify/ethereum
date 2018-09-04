@@ -19,7 +19,6 @@ contract MonthlySubscription is Whitelist {
    
    /**
    * @dev add new item mapping
-   * @param _operators addresses
    */
    function setItem(address _address, string _name, string _publicKey, string _privateKey) public 
    onlyOwner{
@@ -30,7 +29,6 @@ contract MonthlySubscription is Whitelist {
    
    /**
    * @dev get all item for given address
-   * @param _operators addresses
    * @return item properties, seperated by ';'
    */
    function getItem(address _address) public view returns(string, string, string) {
@@ -56,7 +54,6 @@ contract MonthlySubscription is Whitelist {
 
    /**
    * @dev request to transafer one item to another address
-   * @param _operators addresses
    */
    function requestTransferItem(address _fromAdd, address _toAdd, string _publicKey) public
    {
@@ -75,7 +72,6 @@ contract MonthlySubscription is Whitelist {
    }
    /**
    * @dev confirm transfering item from another address
-   * @param _operators addresses
    */
    function confirmTransferItem(address _fromAdd, address _toAdd, string _publicKey) public
    {
@@ -121,7 +117,6 @@ contract MonthlySubscription is Whitelist {
 
    /**
    * @dev concate strings
-   * @param _operators strings
    * @return concatenated string
    */
    function strConcat(string _a, string _b, string _c) 
