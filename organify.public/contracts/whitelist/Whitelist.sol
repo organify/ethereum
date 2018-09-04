@@ -52,7 +52,6 @@ contract Whitelist is Ownable, RBAC {
    */
   function addAddressesToWhitelist(address[] _operators, string _role)
     public
-    onlyOwner
   {
     for (uint256 i = 0; i < _operators.length; i++) {
       addAddressToWhitelist(_operators[i], _role);
